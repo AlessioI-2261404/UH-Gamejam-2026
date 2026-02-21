@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b32i38w0eftue"]
+
+[ext_resource type="Script" uid="uid://b3ef6yw3lse8v" path="res://Scripts/hud.gd" id="1_bjfho"]
+[ext_resource type="Texture2D" uid="uid://ca4subqsyh5iq" path="res://Assets/Chalk.png" id="2_bjfho"]
+[ext_resource type="Texture2D" uid="uid://cj5pt54dpb47q" path="res://Assets/Eraser.png" id="2_fccik"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e0onf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bjfho")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fccik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fccik")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="HUD" type="CanvasLayer" unique_id=1805171799]
+script = ExtResource("1_bjfho")
+
+[node name="Pencil" type="Node2D" parent="." unique_id=1482174695]
+metadata/_edit_group_ = true
+
+[node name="pencilBtn" type="Button" parent="Pencil" unique_id=1117078615]
+visibility_layer = 0
+offset_left = 1043.0
+offset_top = 95.0
+offset_right = 1083.0
+offset_bottom = 145.0
+text = "p"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil" unique_id=557562944]
+position = Vector2(1906, 552)
+scale = Vector2(0.63100004, 0.324)
+sprite_frames = SubResource("SpriteFrames_e0onf")
+animation = &"idle"
+
+[node name="Erase" type="Node2D" parent="." unique_id=2101707096]
+metadata/_edit_group_ = true
+
+[node name="eraseBtn" type="Button" parent="Erase" unique_id=626752741]
+visibility_layer = 0
+offset_left = 1045.0
+offset_top = 193.0
+offset_right = 1087.0
+offset_bottom = 246.0
+text = "Erse"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase" unique_id=1558659628]
+position = Vector2(1068, 222.00002)
+scale = Vector2(0.09791667, 0.104791686)
+sprite_frames = SubResource("SpriteFrames_fccik")
+animation = &"idle"
+
+[connection signal="pressed" from="Pencil/pencilBtn" to="." method="_on_pencil_btn_pressed"]
+[connection signal="pressed" from="Erase/eraseBtn" to="." method="_on_erase_btn_pressed"]
