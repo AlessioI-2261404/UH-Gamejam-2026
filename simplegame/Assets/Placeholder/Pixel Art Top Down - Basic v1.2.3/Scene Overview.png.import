@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfdol3swpcwo0"
-path="res://.godot/imported/Character.png-f98bfd4a519deb39a93cee80b0823610.ctex"
+uid="uid://b5krv3ua4eoam"
+path="res://.godot/imported/Scene Overview.png-c524980a1a1731a184815c8edd9d5e95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character.png"
-dest_files=["res://.godot/imported/Character.png-f98bfd4a519deb39a93cee80b0823610.ctex"]
+source_file="res://Assets/Placeholder/Pixel Art Top Down - Basic v1.2.3/Scene Overview.png"
+dest_files=["res://.godot/imported/Scene Overview.png-c524980a1a1731a184815c8edd9d5e95.ctex"]
 
 [params]
 
