@@ -6,12 +6,14 @@ enum ToolSelected {
 	NONE
 }	
 
+
+
 # Global Script variables
 var toolSelected = ToolSelected.NONE
 
 # Stop pencil and erase animation
 func stop_animation() -> void:
-	$Pencil/AnimatedSprite2D.play("idle")
+	$Pencil/AnimatedSprite2D.play("100%")
 	$Erase/AnimatedSprite2D.play("idle")
 
 
@@ -22,14 +24,15 @@ func tool_select(tool: ToolSelected) -> void:
 	else:
 		toolSelected = tool
 	stop_animation()
+	$Cursor.set_tool(tool)
 
 
 func _on_pencil_btn_pressed() -> void:
 	tool_select(ToolSelected.PENCIL)
-	
 	# Play animation
 	if (toolSelected == ToolSelected.PENCIL):
 		pencilSelected.emit()
+		
 		print("PENCIL")
 		pass
 

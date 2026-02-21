@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var tile_size: int = 32
-@export var move_time: float = 0.12
+@export var tile_size: int = 256
+@export var move_time: float = 0.6
 
 var _moving := false
 var _from_pos: Vector2
@@ -10,14 +10,14 @@ var _t := 0.0
 
 func _ready() -> void:
 	add_to_group("player")
-	# Snap player to grid on start
-	global_position = global_position.snapped(Vector2(tile_size, tile_size))
 
 func _physics_process(delta: float) -> void:
 	if _moving:
+		$AnimatedSprite2D.play("moving")
 		_t += delta / move_time
 		global_position = _from_pos.lerp(_to_pos, clamp(_t, 0.0, 1.0))
 		if _t >= 1.0:
+			$AnimatedSprite2D.play("idle")
 			global_position = _to_pos
 			_moving = false
 		return
