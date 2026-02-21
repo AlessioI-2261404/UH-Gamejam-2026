@@ -37,12 +37,8 @@ func _physics_process(delta: float) -> void:
 
 func _try_move(dir: Vector2) -> void:
 	var target := global_position + dir * tile_size
-
-	# Use CharacterBody2D collision check: test move without actually moving.
-	# We create a motion vector to the target and see if it collides.
 	var motion := target - global_position
 
-	# test_move checks collisions for the given transform/motion.
 	if test_move(global_transform, motion):
 		return # blocked
 

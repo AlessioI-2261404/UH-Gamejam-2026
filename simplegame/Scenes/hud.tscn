@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b32i38w0eftue"]
+[gd_scene load_steps=15 format=3 uid="uid://b32i38w0eftue"]
 
 [ext_resource type="Script" uid="uid://b3ef6yw3lse8v" path="res://Scripts/hud.gd" id="1_bjfho"]
 [ext_resource type="Texture2D" uid="uid://ca4subqsyh5iq" path="res://Assets/Chalk.png" id="2_bjfho"]
@@ -106,14 +106,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="HUD" type="CanvasLayer" unique_id=1805171799]
+[node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_bjfho")
 
-[node name="Pencil" type="Node2D" parent="." unique_id=1482174695]
+[node name="Pencil" type="Node2D" parent="."]
 position = Vector2(-836, -443)
 metadata/_edit_group_ = true
 
-[node name="pencilBtn" type="Button" parent="Pencil" unique_id=1117078615]
+[node name="pencilBtn" type="Button" parent="Pencil"]
 visibility_layer = 0
 offset_left = 1892.0
 offset_top = 531.0
@@ -121,17 +121,17 @@ offset_right = 1925.0
 offset_bottom = 578.0
 text = "p"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil" unique_id=557562944]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil"]
 position = Vector2(1906, 552)
-scale = Vector2(0.63100004, 0.324)
+scale = Vector2(0.631, 0.324)
 sprite_frames = SubResource("SpriteFrames_e0onf")
 animation = &"100%"
-frame_progress = 0.08043101
+frame_progress = 0.080431
 
-[node name="Erase" type="Node2D" parent="." unique_id=2101707096]
+[node name="Erase" type="Node2D" parent="."]
 metadata/_edit_group_ = true
 
-[node name="eraseBtn" type="Button" parent="Erase" unique_id=626752741]
+[node name="eraseBtn" type="Button" parent="Erase"]
 visibility_layer = 0
 offset_left = 1045.0
 offset_top = 193.0
@@ -139,16 +139,16 @@ offset_right = 1087.0
 offset_bottom = 246.0
 text = "Erse"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase" unique_id=1558659628]
-position = Vector2(1068, 222.00002)
-scale = Vector2(0.09791667, 0.104791686)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase"]
+position = Vector2(1068, 222)
+scale = Vector2(0.0979167, 0.104792)
 sprite_frames = SubResource("SpriteFrames_fccik")
 animation = &"idle"
 
-[node name="Cursor" type="AnimatedSprite2D" parent="." unique_id=1641244287]
-position = Vector2(9.536743e-07, 0)
-rotation = 0.31241393
-scale = Vector2(0.19808775, 0.12815058)
+[node name="Cursor" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+rotation = 0.312414
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_5ep0j")
 animation = &"erase"
 script = ExtResource("4_6fbih")
