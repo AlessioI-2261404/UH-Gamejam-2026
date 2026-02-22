@@ -3409,6 +3409,9 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_lbatl")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jiouf"]
+size = Vector2(152.5, 137.5)
+
 [node name="Level2" type="Node2D" unique_id=1056234087]
 script = ExtResource("1_jiouf")
 
@@ -3437,3 +3440,11 @@ scale = Vector2(7, 7)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1439064852]
 position = Vector2(988, 539)
 zoom = Vector2(0.5, 0.42)
+
+[node name="Exit" type="Area2D" parent="." unique_id=1923404052]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=1586520682]
+position = Vector2(1768, 160)
+shape = SubResource("RectangleShape2D_jiouf")
+
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

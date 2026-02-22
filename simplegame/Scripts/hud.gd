@@ -82,6 +82,5 @@ func _on_reset_button_pressed() -> void:
 	clear_path.emit()
 
 func _on_move_button_pressed() -> void:
-	if _last_pencil_state == 4:
-		print("I CAN MOVE?")
-		move_pressed.emit()
+	print("I CAN MOVE?")
+	move_pressed.emit()

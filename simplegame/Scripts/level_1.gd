@@ -6,6 +6,7 @@ extends Node2D
 @onready var player = $Player
 @onready var drawing_layer = $Drawer  # add this at the top
 
+@export_file("*.tscn") var next_scene: String
 
 var drawing := false
 var current_tool: HUD.ToolSelected = HUD.ToolSelected.NONE
@@ -112,6 +113,12 @@ func _clear_drawer_path() -> void:
 	drawing_layer.queue_redraw()
 	
 	player.adjust_position(player.original_position)
-	
 
-	
+
+func _on_exit_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		print("PLAYER EXIT")
+		if next_scene != "":
+			get_tree().change_scene_to_file(next_scene)
+		else:
+			get_tree().change_scene_to_file("res://levels/Level2.tscn")
