@@ -5,6 +5,7 @@ extends Node2D
 @onready var hud: HUD = $HUD
 @onready var player = $Player
 @onready var drawing_layer = $Drawer  # add this at the top
+@onready var box = $Box
 
 
 var drawing := false
@@ -77,7 +78,7 @@ func _apply_tool_from_mouse() -> void:
 			var last_pos: Vector2 = drawing_layer.path.back()
 			var space_state = get_world_2d().direct_space_state
 			var params = PhysicsRayQueryParameters2D.create(last_pos, world_pos)
-			params.exclude = [player.get_rid()]
+			params.exclude = [player.get_rid(), box.get_rid()]
 			var result = space_state.intersect_ray(params)
 			if result:
 				return  # line crosses an obstacle
@@ -100,18 +101,24 @@ func _apply_tool_from_mouse() -> void:
 		
 		
 func _move_player() -> void:
+	player.playAnimation("moving")
+	player.playWalkingSound(true)
 	for dot in drawing_layer.path:
 		player.adjust_position(dot)
 		await player.reached_position 
+	player.playWalkingSound(false)
+	player.playAnimation("idle")
 
-	
+		
 func _clear_drawer_path() -> void:
 	var first: Vector2 = drawing_layer.path[0]
+	box.global_position = $BoxStartPos.global_position
 	drawing_layer.path.clear()
 	drawing_layer.path.append(first)
 	drawing_layer.queue_redraw()
 	
+	player.playAnimation("moving")
 	player.adjust_position(player.original_position)
-	
+	player.playAnimation("idle")
 
 	

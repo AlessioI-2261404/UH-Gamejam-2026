@@ -9,7 +9,6 @@ var speed: float = 1000.0
 func adjust_position(dot: Vector2) -> void:
 	target = dot
 
-
 func _ready() -> void:
 	original_position = global_position
 	target = global_position
@@ -20,3 +19,13 @@ func _process(delta: float) -> void:
 	else:
 		global_position = target
 		reached_position.emit()
+
+func playAnimation(type : String):
+	$AnimatedSprite2D.play(type)
+
+func playWalkingSound(play : bool = true):
+	if play:
+		$walkingsound.play()	
+	else:
+		$walkingsound.stop()
+		
