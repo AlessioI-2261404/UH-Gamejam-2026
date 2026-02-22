@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://befgej3cbdws"]
+[gd_scene format=3 uid="uid://befgej3cbdws"]
 
 [ext_resource type="Script" uid="uid://br0vfqo44l4m8" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
 [ext_resource type="Texture2D" uid="uid://cpmmm8xmadd0e" path="res://Assets/istockphoto-656457160-170667a.jpg" id="2_853f1"]
@@ -12,7 +12,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1436352918]
 layout_mode = 3
 anchor_left = 0.046
 anchor_top = -0.081
@@ -27,15 +27,15 @@ grow_vertical = 2
 scale = Vector2(2.46168, 2.46168)
 script = ExtResource("1_tt5f1")
 
-[node name="Istockphoto-656457160-170667a" type="Sprite2D" parent="."]
+[node name="Istockphoto-656457160-170667a" type="Sprite2D" parent="." unique_id=1378903221]
 position = Vector2(576, 327)
 scale = Vector2(2.12022, 2.12022)
 texture = ExtResource("2_853f1")
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=1533469291]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
-layout_mode = 2
+layout_mode = 0
 offset_left = 113.743
 offset_top = 106.431
 offset_right = 585.743
@@ -47,10 +47,10 @@ text = "Keep
 It
 Simple"
 
-[node name="Start" type="Button" parent="."]
+[node name="Start" type="Button" parent="." unique_id=1075738083]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
-layout_mode = 2
+layout_mode = 0
 offset_left = 698.71
 offset_top = 125.93
 offset_right = 1023.71
@@ -60,7 +60,7 @@ theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
 text = "START "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=284642686]
 layout_mode = 0
 offset_left = 681.649
 offset_top = 354.636
@@ -68,10 +68,10 @@ offset_right = 808.649
 offset_bottom = 455.636
 scale = Vector2(3.54019, 3.54019)
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1555214398]
 layout_mode = 2
 
-[node name="Level1" type="Button" parent="HBoxContainer/VBoxContainer2"]
+[node name="Level1" type="Button" parent="HBoxContainer/VBoxContainer2" unique_id=793858064]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
@@ -80,7 +80,7 @@ theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
 text = "level 1"
 
-[node name="Level2" type="Button" parent="HBoxContainer/VBoxContainer2"]
+[node name="Level2" type="Button" parent="HBoxContainer/VBoxContainer2" unique_id=244455679]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
@@ -89,7 +89,7 @@ theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
 text = "level 2"
 
-[node name="Level3" type="Button" parent="HBoxContainer/VBoxContainer2"]
+[node name="Level3" type="Button" parent="HBoxContainer/VBoxContainer2" unique_id=1883969611]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
@@ -98,13 +98,13 @@ theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
 text = "level 3"
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=1415667363]
 layout_mode = 2
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer" unique_id=1971781419]
 layout_mode = 2
 
-[node name="Level4" type="Button" parent="HBoxContainer/VBoxContainer3"]
+[node name="Level4" type="Button" parent="HBoxContainer/VBoxContainer3" unique_id=332865347]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
@@ -113,7 +113,7 @@ theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
 text = "level 4"
 
-[node name="Level5" type="Button" parent="HBoxContainer/VBoxContainer3"]
+[node name="Level5" type="Button" parent="HBoxContainer/VBoxContainer3" unique_id=1767524539]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
@@ -122,7 +122,7 @@ theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
 text = "level 5"
 
-[node name="Level6" type="Button" parent="HBoxContainer/VBoxContainer3"]
+[node name="Level6" type="Button" parent="HBoxContainer/VBoxContainer3" unique_id=1022122129]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
@@ -131,6 +131,6 @@ theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
 text = "level 6"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=659064411]
 position = Vector2(575.217, 328.231)
 zoom = Vector2(0.42, 0.4)

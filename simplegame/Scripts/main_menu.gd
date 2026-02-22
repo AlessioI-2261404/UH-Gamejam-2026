@@ -11,7 +11,7 @@ extends Control
 
 func _ready() -> void:
 	btn_level_1.pressed.connect(func():
-		get_tree().change_scene_to_file("res://levels/Level1.tscn")
+		get_tree().change_scene_to_file("res://levels/level1.tscn")
 	)
 
 	btn_level_2.pressed.connect(func():
@@ -35,5 +35,5 @@ func _ready() -> void:
 	)
 
 	Start.pressed.connect(func():
-		get_tree().change_scene_to_file("res://levels/Level1.tscn")
+		get_tree().change_scene_to_file("res://levels/level1.tscn")
 	)
