@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cpnt1nynb8o8g"]
+
+[ext_resource type="Texture2D" uid="uid://du7m80di0xh1j" path="res://Assets/Placeholder/Pixel Art Top Down - Basic v1.2.3/Texture/TX Props.png" id="1_xkb4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6ket"]
+size = Vector2(57, 60.5)
+
+[node name="Box" type="RigidBody2D" unique_id=624137149]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=268195157]
+position = Vector2(0, 2.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_p6ket")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=259574640]
+position = Vector2(5.9604645e-08, 0)
+scale = Vector2(3.8785715, 2.7807992)
+texture = ExtResource("1_xkb4e")
+region_enabled = true
+region_rect = Rect2(158.33672, 14.777348, 35.20009, 51.315807)
