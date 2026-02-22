@@ -101,10 +101,11 @@ func _apply_tool_from_mouse() -> void:
 		
 		
 func _move_player() -> void:
+	$Player/AnimatedSprite2D.play("moving")
 	for dot in drawing_layer.path:
 		player.adjust_position(dot)
 		await player.reached_position 
-
+	$Player/AnimatedSprite2D.play("idle")
 	
 func _clear_drawer_path() -> void:
 	var first: Vector2 = drawing_layer.path[0]
@@ -113,7 +114,9 @@ func _clear_drawer_path() -> void:
 	drawing_layer.path.append(first)
 	drawing_layer.queue_redraw()
 	
+	$Player/AnimatedSprite2D.play("moving")
 	player.adjust_position(player.original_position)
-	
+	$Player/AnimatedSprite2D.play("idle")
+
 
 	

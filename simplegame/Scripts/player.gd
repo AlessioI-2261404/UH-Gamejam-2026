@@ -9,7 +9,6 @@ var speed: float = 1000.0
 func adjust_position(dot: Vector2) -> void:
 	target = dot
 
-
 func _ready() -> void:
 	original_position = global_position
 	target = global_position
