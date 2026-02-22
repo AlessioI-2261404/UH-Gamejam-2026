@@ -27,7 +27,7 @@ func _ready() -> void:
 	hud.move_pressed.connect(_move_player)
 	hud.clear_path.connect(_clear_drawer_path)
 	drawing_layer.path.append(player.global_position)
-	hud.set_initial_pencil_power(6000)	
+	hud.set_initial_pencil_power(3300)	
 
 	
 

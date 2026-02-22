@@ -1,6 +1,6 @@
 extends Node2D
-signal activated
-signal unactivated
+signal activated()
+signal unactivated()
 
 var active: bool = false
 

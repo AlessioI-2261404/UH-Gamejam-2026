@@ -6,13 +6,20 @@ extends Node2D
 @onready var hud: HUD = $HUD
 @onready var player = $Player
 @onready var drawing_layer = $Drawer  # add this at the top
-@onready var box = $Box
 
+#pressure plate - box relations
+@onready var box = $Box
+@onready var gate7 = $gate7/CollisionShape2D
+@onready var gateparticle = $gateparticle/CPUParticles2D
+@onready var pressureplate = $PressurePlate
 
 var drawing := false
 var current_tool: HUD.ToolSelected = HUD.ToolSelected.NONE
 var path: Array[Vector2i] = []
 var mouse_on_player : bool = false
+
+
+
 
 # --- highlight tile info (adjust to your highlight tileset) ---
 const HIGHLIGHT_SOURCE_ID: int = 0
@@ -28,8 +35,8 @@ func _ready() -> void:
 	hud.clear_path.connect(_clear_drawer_path)
 	drawing_layer.path.append(player.global_position)
 	hud.set_initial_pencil_power(6000)	
-
-	
+	pressureplate.activated.connect(on_pressure_plate_pressed)
+	pressureplate.unactivated.connect(on_pressure_plate_exited)
 
 
 func _on_tool_changed(tool: HUD.ToolSelected) -> void:
@@ -127,7 +134,6 @@ func _clear_drawer_path() -> void:
 	box.linear_velocity = Vector2.ZERO
 	box.angular_velocity = 0.0
 	await get_tree().process_frame
-	await get_tree().process_frame
 	PhysicsServer2D.body_set_state(
 		box.get_rid(),
 		PhysicsServer2D.BODY_STATE_TRANSFORM,
@@ -139,7 +145,9 @@ func _clear_drawer_path() -> void:
 	player.adjust_position(player.original_position)
 	await player.reached_position  
 	player.playAnimation("idle")
-
+	
+	gate7.set_deferred("disabled", false)
+	
 	
 
 
@@ -153,3 +161,13 @@ func _on_exit_body_entered(body: Node2D) -> void:
 			await get_tree().create_timer(2.0).timeout
 			hud._on_reset_button_pressed()
 			get_tree().change_scene_to_file("res://levels/Level6.tscn")
+
+func on_pressure_plate_pressed():
+	gate7.set_deferred("disabled", true)
+	gateparticle.one_shot = true
+	gateparticle.emitting = true
+	
+func on_pressure_plate_exited():
+	gate7.set_deferred("disabled", false)
+
+	
