@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7tcsjur6xkcl" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://bfdol3swpcwo0" path="res://Assets/Character.png" id="2_kyqiw"]
+[ext_resource type="AudioStream" uid="uid://3g1wdpg6g5a4" path="res://Assets/SFX/VoestStappen.wav" id="3_gntrk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
 atlas = ExtResource("2_kyqiw")
@@ -140,3 +141,7 @@ autoplay = "idle"
 position = Vector2(-1.19209e-07, -1.90735e-06)
 scale = Vector2(0.639079, 0.76)
 shape = SubResource("CapsuleShape2D_1e7my")
+
+[node name="walkingsound" type="AudioStreamPlayer2D" parent="." unique_id=2117622457]
+stream = ExtResource("3_gntrk")
+volume_db = 10.875

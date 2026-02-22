@@ -19,3 +19,13 @@ func _process(delta: float) -> void:
 	else:
 		global_position = target
 		reached_position.emit()
+
+func playAnimation(type : String):
+	$AnimatedSprite2D.play(type)
+
+func playWalkingSound(play : bool = true):
+	if play:
+		$walkingsound.play()	
+	else:
+		$walkingsound.stop()
+		
