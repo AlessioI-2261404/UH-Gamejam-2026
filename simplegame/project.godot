@@ -16,5 +16,5 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="SimpleGame"
 run/main_scene="uid://befgej3cbdws"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
