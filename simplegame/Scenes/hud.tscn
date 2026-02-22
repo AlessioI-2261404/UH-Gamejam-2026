@@ -1,9 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://b32i38w0eftue"]
+[gd_scene format=3 uid="uid://b32i38w0eftue"]
 
 [ext_resource type="Script" uid="uid://b3ef6yw3lse8v" path="res://Scripts/hud.gd" id="1_bjfho"]
 [ext_resource type="Texture2D" uid="uid://ca4subqsyh5iq" path="res://Assets/Chalk.png" id="2_bjfho"]
 [ext_resource type="Texture2D" uid="uid://cj5pt54dpb47q" path="res://Assets/Eraser.png" id="2_fccik"]
 [ext_resource type="Script" uid="uid://cu05t7m0s2snv" path="res://Scenes/cursor.gd" id="4_6fbih"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6fbih"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2avg"]
+atlas = ExtResource("2_bjfho")
+region = Rect2(0, 333, 320, 333)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjfho"]
 atlas = ExtResource("2_bjfho")
@@ -23,6 +29,14 @@ region = Rect2(321, 0, 321, 333)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e0onf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2avg")
+}],
+"loop": true,
+"name": &"0%",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bjfho")
@@ -75,9 +89,25 @@ region = Rect2(856, 750, 428, 375)
 atlas = ExtResource("2_fccik")
 region = Rect2(0, 0, 3000, 3000)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a2va"]
+atlas = ExtResource("2_bjfho")
+region = Rect2(320, 666, 320, 333)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gr8i"]
 atlas = ExtResource("2_bjfho")
 region = Rect2(0, 0, 318, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ep0j"]
+atlas = ExtResource("2_bjfho")
+region = Rect2(960, 0, 320, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f5kr"]
+atlas = ExtResource("2_bjfho")
+region = Rect2(640, 0, 320, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piegi"]
+atlas = ExtResource("2_bjfho")
+region = Rect2(320, 0, 320, 300)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ep0j"]
 animations = [{
@@ -99,21 +129,62 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1a2va")
+}],
+"loop": true,
+"name": &"pencil0%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7gr8i")
 }],
 "loop": true,
-"name": &"pencil",
+"name": &"pencil100%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ep0j")
+}],
+"loop": true,
+"name": &"pencil25%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f5kr")
+}],
+"loop": true,
+"name": &"pencil50%",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piegi")
+}],
+"loop": true,
+"name": &"pencil75%",
 "speed": 5.0
 }]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=762356919]
 script = ExtResource("1_bjfho")
 
-[node name="Pencil" type="Node2D" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1133951425]
+modulate = Color(0.8408465, 0.88031447, 1, 1)
+self_modulate = Color(0.8270219, 0.9431298, 0.9994506, 1)
+offset_left = 995.0
+offset_top = 46.0
+offset_right = 1145.0
+offset_bottom = 417.0
+texture = SubResource("CanvasTexture_6fbih")
+
+[node name="Pencil" type="Node2D" parent="." unique_id=833280453]
 position = Vector2(-836, -443)
 metadata/_edit_group_ = true
 
-[node name="pencilBtn" type="Button" parent="Pencil"]
+[node name="pencilBtn" type="Button" parent="Pencil" unique_id=1818463927]
 visibility_layer = 0
 offset_left = 1892.0
 offset_top = 531.0
@@ -121,17 +192,16 @@ offset_right = 1925.0
 offset_bottom = 578.0
 text = "p"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil" unique_id=1261355571]
 position = Vector2(1906, 552)
 scale = Vector2(0.631, 0.324)
 sprite_frames = SubResource("SpriteFrames_e0onf")
 animation = &"100%"
-frame_progress = 0.080431
 
-[node name="Erase" type="Node2D" parent="."]
+[node name="Erase" type="Node2D" parent="." unique_id=1560974136]
 metadata/_edit_group_ = true
 
-[node name="eraseBtn" type="Button" parent="Erase"]
+[node name="eraseBtn" type="Button" parent="Erase" unique_id=349169202]
 visibility_layer = 0
 offset_left = 1045.0
 offset_top = 193.0
@@ -139,19 +209,37 @@ offset_right = 1087.0
 offset_bottom = 246.0
 text = "Erse"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase" unique_id=2077646449]
 position = Vector2(1068, 222)
 scale = Vector2(0.0979167, 0.104792)
 sprite_frames = SubResource("SpriteFrames_fccik")
 animation = &"idle"
 
-[node name="Cursor" type="AnimatedSprite2D" parent="."]
+[node name="Cursor" type="AnimatedSprite2D" parent="." unique_id=467589410]
 position = Vector2(9.53674e-07, 0)
 rotation = 0.312414
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_5ep0j")
-animation = &"erase"
+animation = &"pencil0%"
 script = ExtResource("4_6fbih")
+
+[node name="Options" type="Node2D" parent="." unique_id=199202943]
+
+[node name="Reset" type="Button" parent="Options" unique_id=457755507]
+offset_left = 1027.0
+offset_top = 274.0
+offset_right = 1098.0
+offset_bottom = 322.0
+text = "Reset"
+
+[node name="Move" type="Button" parent="Options" unique_id=923015662]
+offset_left = 1028.0
+offset_top = 339.0
+offset_right = 1101.0
+offset_bottom = 381.0
+text = "Move"
 
 [connection signal="pressed" from="Pencil/pencilBtn" to="." method="_on_pencil_btn_pressed"]
 [connection signal="pressed" from="Erase/eraseBtn" to="." method="_on_erase_btn_pressed"]
+[connection signal="pressed" from="Options/Reset" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Options/Move" to="." method="_on_move_button_pressed"]

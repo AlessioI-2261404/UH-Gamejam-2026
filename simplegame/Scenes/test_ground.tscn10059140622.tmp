@@ -3427,9 +3427,6 @@ position = Vector2(94, 32)
 scale = Vector2(8, 8)
 tile_set = SubResource("TileSet_2heq8")
 
-[node name="Drawer" type="Node2D" parent="." unique_id=1345930474]
-script = ExtResource("6_2heq8")
-
 [node name="Player" parent="." unique_id=1017545723 instance=ExtResource("3_i6jhg")]
 position = Vector2(221, 168)
 scale = Vector2(7, 7)
@@ -3437,3 +3434,6 @@ scale = Vector2(7, 7)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=882808286]
 position = Vector2(476, 281)
 zoom = Vector2(0.65, 0.65)
+
+[node name="Drawer" type="Node2D" parent="." unique_id=1345930474]
+script = ExtResource("6_2heq8")
