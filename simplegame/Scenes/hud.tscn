@@ -169,19 +169,22 @@ animations = [{
 }]
 
 [node name="HUD" type="CanvasLayer"]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 script = ExtResource("1_bjfho")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.840846, 0.880314, 1, 1)
 self_modulate = Color(0.827022, 0.94313, 0.999451, 1)
-offset_left = 995.0
-offset_top = 46.0
-offset_right = 1145.0
-offset_bottom = 417.0
+offset_left = 2091.0
+offset_top = 37.0
+offset_right = 2241.0
+offset_bottom = 408.0
 texture = SubResource("CanvasTexture_6fbih")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pencil" type="Node2D" parent="."]
-position = Vector2(-836, -443)
+position = Vector2(260, -452)
 metadata/_edit_group_ = true
 
 [node name="pencilBtn" type="Button" parent="Pencil"]
@@ -191,6 +194,7 @@ offset_top = 531.0
 offset_right = 1925.0
 offset_bottom = 578.0
 text = "p"
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil"]
 position = Vector2(1906, 552)
@@ -199,6 +203,7 @@ sprite_frames = SubResource("SpriteFrames_e0onf")
 animation = &"100%"
 
 [node name="Erase" type="Node2D" parent="."]
+position = Vector2(1096, -9.00001)
 metadata/_edit_group_ = true
 
 [node name="eraseBtn" type="Button" parent="Erase"]
@@ -208,6 +213,7 @@ offset_top = 193.0
 offset_right = 1087.0
 offset_bottom = 246.0
 text = "Erse"
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase"]
 position = Vector2(1068, 222)
@@ -216,7 +222,7 @@ sprite_frames = SubResource("SpriteFrames_fccik")
 animation = &"idle"
 
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
-position = Vector2(9.53674e-07, 0)
+position = Vector2(1096, -9.00001)
 rotation = 0.312414
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_5ep0j")
@@ -224,6 +230,7 @@ animation = &"pencil0%"
 script = ExtResource("4_6fbih")
 
 [node name="Options" type="Node2D" parent="."]
+position = Vector2(1096, -9.00001)
 
 [node name="Reset" type="Button" parent="Options"]
 offset_left = 1027.0
@@ -231,6 +238,7 @@ offset_top = 274.0
 offset_right = 1098.0
 offset_bottom = 322.0
 text = "Reset"
+metadata/_edit_use_anchors_ = true
 
 [node name="Move" type="Button" parent="Options"]
 offset_left = 1028.0
@@ -238,6 +246,7 @@ offset_top = 339.0
 offset_right = 1101.0
 offset_bottom = 381.0
 text = "Move"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Pencil/pencilBtn" to="." method="_on_pencil_btn_pressed"]
 [connection signal="pressed" from="Erase/eraseBtn" to="." method="_on_erase_btn_pressed"]
