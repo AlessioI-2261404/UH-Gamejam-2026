@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b32i38w0eftue"]
+[gd_scene load_steps=21 format=3 uid="uid://b32i38w0eftue"]
 
 [ext_resource type="Script" uid="uid://b3ef6yw3lse8v" path="res://Scripts/hud.gd" id="1_bjfho"]
 [ext_resource type="Texture2D" uid="uid://ca4subqsyh5iq" path="res://Assets/Chalk.png" id="2_bjfho"]
@@ -168,23 +168,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="HUD" type="CanvasLayer" unique_id=762356919]
+[node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_bjfho")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1133951425]
-modulate = Color(0.8408465, 0.88031447, 1, 1)
-self_modulate = Color(0.8270219, 0.9431298, 0.9994506, 1)
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.840846, 0.880314, 1, 1)
+self_modulate = Color(0.827022, 0.94313, 0.999451, 1)
 offset_left = 995.0
 offset_top = 46.0
 offset_right = 1145.0
 offset_bottom = 417.0
 texture = SubResource("CanvasTexture_6fbih")
 
-[node name="Pencil" type="Node2D" parent="." unique_id=833280453]
+[node name="Pencil" type="Node2D" parent="."]
 position = Vector2(-836, -443)
 metadata/_edit_group_ = true
 
-[node name="pencilBtn" type="Button" parent="Pencil" unique_id=1818463927]
+[node name="pencilBtn" type="Button" parent="Pencil"]
 visibility_layer = 0
 offset_left = 1892.0
 offset_top = 531.0
@@ -192,16 +192,16 @@ offset_right = 1925.0
 offset_bottom = 578.0
 text = "p"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil" unique_id=1261355571]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil"]
 position = Vector2(1906, 552)
 scale = Vector2(0.631, 0.324)
 sprite_frames = SubResource("SpriteFrames_e0onf")
 animation = &"100%"
 
-[node name="Erase" type="Node2D" parent="." unique_id=1560974136]
+[node name="Erase" type="Node2D" parent="."]
 metadata/_edit_group_ = true
 
-[node name="eraseBtn" type="Button" parent="Erase" unique_id=349169202]
+[node name="eraseBtn" type="Button" parent="Erase"]
 visibility_layer = 0
 offset_left = 1045.0
 offset_top = 193.0
@@ -209,13 +209,13 @@ offset_right = 1087.0
 offset_bottom = 246.0
 text = "Erse"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase" unique_id=2077646449]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase"]
 position = Vector2(1068, 222)
 scale = Vector2(0.0979167, 0.104792)
 sprite_frames = SubResource("SpriteFrames_fccik")
 animation = &"idle"
 
-[node name="Cursor" type="AnimatedSprite2D" parent="." unique_id=467589410]
+[node name="Cursor" type="AnimatedSprite2D" parent="."]
 position = Vector2(9.53674e-07, 0)
 rotation = 0.312414
 scale = Vector2(0.1, 0.1)
@@ -223,16 +223,16 @@ sprite_frames = SubResource("SpriteFrames_5ep0j")
 animation = &"pencil0%"
 script = ExtResource("4_6fbih")
 
-[node name="Options" type="Node2D" parent="." unique_id=199202943]
+[node name="Options" type="Node2D" parent="."]
 
-[node name="Reset" type="Button" parent="Options" unique_id=457755507]
+[node name="Reset" type="Button" parent="Options"]
 offset_left = 1027.0
 offset_top = 274.0
 offset_right = 1098.0
 offset_bottom = 322.0
 text = "Reset"
 
-[node name="Move" type="Button" parent="Options" unique_id=923015662]
+[node name="Move" type="Button" parent="Options"]
 offset_left = 1028.0
 offset_top = 339.0
 offset_right = 1101.0
