@@ -6,6 +6,7 @@ extends Node2D
 @onready var hud: HUD = $HUD
 @onready var player = $Player
 @onready var drawing_layer = $Drawer  # add this at the top
+@onready var leveldone = $LevelFinished
 #@onready var box = $Box
 
 
@@ -137,5 +138,7 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		if next_scene != "":
 			get_tree().change_scene_to_file(next_scene)
 		else:
+			hud.play_level_finished_sound(1)
+			await get_tree().create_timer(2.0).timeout
 			hud._on_reset_button_pressed()
 			get_tree().change_scene_to_file("res://levels/Level2.tscn")

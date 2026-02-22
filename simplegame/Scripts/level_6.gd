@@ -16,6 +16,7 @@ extends Node2D
 @onready var gate5 = $gate5/CollisionShape2D
 @onready var key6 = $key6
 @onready var gate6 = $gate6/CollisionShape2D
+@onready var gateparticle = $gateparticle/CPUParticles2D
 
 var drawing := false
 var current_tool: HUD.ToolSelected = HUD.ToolSelected.NONE
@@ -35,7 +36,7 @@ func _ready() -> void:
 	hud.move_pressed.connect(_move_player)
 	hud.clear_path.connect(_clear_drawer_path)
 	drawing_layer.path.append(player.global_position)
-	hud.set_initial_pencil_power(20000)	
+	hud.set_initial_pencil_power(25000)	
 
 	
 
@@ -149,26 +150,31 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		if next_scene != "":
 			get_tree().change_scene_to_file(next_scene)
 		else:
+			hud.play_level_finished_sound(6)
+			await get_tree().create_timer(4.0).timeout
 			hud._on_reset_button_pressed()
 			get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
-
+			
 
 func _on_key_4_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		key4.hide()
 		gate4.set_deferred("disabled", true)
-		print("GOT KEY1")
-
+		gateparticle.one_shot = true
+		gateparticle.emitting = true
 
 func _on_key_5_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		key5.hide()
 		gate5.set_deferred("disabled", true)
-		print("GOT KEY2")
-
+		gateparticle.one_shot = true
+		gateparticle.emitting = true
 
 func _on_key_6_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		key6.hide()
 		gate6.set_deferred("disabled", true)
-		print("GOT KEY3")
+		gateparticle.one_shot = true
+		gateparticle.emitting = true
+		
+		

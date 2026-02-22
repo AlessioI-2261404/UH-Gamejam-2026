@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bdcno3or7e1x3"]
+[gd_scene format=3 uid="uid://knvoewnwpa0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2h5vk"]
 
@@ -7,7 +7,8 @@
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=370137422]
 material = SubResource("CanvasItemMaterial_2h5vk")
 use_parent_material = true
-scale = Vector2(0.88000333, 0.88000333)
+scale = Vector2(2, 2)
+skew = 0.6021386
 emitting = false
 amount = 30
 lifetime = 1.5
@@ -16,13 +17,13 @@ speed_scale = 1.5
 explosiveness = 1.0
 randomness = 1.0
 emission_shape = 1
-emission_sphere_radius = 12.91
+emission_sphere_radius = 34.53
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 27.59
 initial_velocity_max = 103.45
 damping_min = 41.379
 damping_max = 46.207
-scale_amount_min = 2.0
-scale_amount_max = 2.0
+scale_amount_min = 1.68
+scale_amount_max = 15.37
 color = Color(1, 1, 0.78431374, 1)

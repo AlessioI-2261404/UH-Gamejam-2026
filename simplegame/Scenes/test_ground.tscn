@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b32i38w0eftue" path="res://Scenes/hud.tscn" id="4_x1xgk"]
 [ext_resource type="Script" uid="uid://kh68pc51y31q" path="res://Scripts/drawer.gd" id="6_2heq8"]
 [ext_resource type="PackedScene" uid="uid://cpnt1nynb8o8g" path="res://Scenes/box.tscn" id="7_ibyf0"]
+[ext_resource type="PackedScene" uid="uid://dnaret572rd8b" path="res://Scenes/pressure_plate.tscn" id="8_hh2ie"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2heq8"]
 texture = ExtResource("2_2heq8")
@@ -3440,8 +3441,12 @@ scale = Vector2(7, 7)
 position = Vector2(476, 281)
 zoom = Vector2(0.65, 0.65)
 
+[node name="PressurePlate" parent="." unique_id=896338078 instance=ExtResource("8_hh2ie")]
+position = Vector2(733, 165.00003)
+scale = Vector2(7, 7)
+
 [node name="Box" parent="." unique_id=624137149 instance=ExtResource("7_ibyf0")]
-position = Vector2(-28, 144)
+position = Vector2(481, 157)
 
 [node name="BoxStartPos" type="Marker2D" parent="." unique_id=555623597]
-position = Vector2(-28, 144)
+position = Vector2(480, 158)

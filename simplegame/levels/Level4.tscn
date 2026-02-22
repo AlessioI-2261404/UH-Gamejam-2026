@@ -7,8 +7,9 @@
 [ext_resource type="Script" uid="uid://kh68pc51y31q" path="res://Scripts/drawer.gd" id="5_nv5kp"]
 [ext_resource type="PackedScene" uid="uid://c4ssf40pr1eb1" path="res://Scenes/Player.tscn" id="6_qxjbv"]
 [ext_resource type="Texture2D" uid="uid://bq4mhwxswvinw" path="res://Assets/key.png" id="7_2dgjd"]
+[ext_resource type="PackedScene" uid="uid://knvoewnwpa0" path="res://Scenes/particle.tscn" id="8_vf7bx"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2heq8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g2dj0"]
 texture = ExtResource("3_6lrky")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -1624,7 +1625,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_x1xgk"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_2heq8")
+sources/1 = SubResource("TileSetAtlasSource_g2dj0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ibyf0"]
 texture = ExtResource("3_6lrky")
@@ -3381,6 +3382,10 @@ shape = SubResource("RectangleShape2D_2dgjd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gate2" unique_id=267029427]
 position = Vector2(1505, 416)
 shape = SubResource("RectangleShape2D_2dgjd")
+
+[node name="gateparticle" parent="." unique_id=712945590 instance=ExtResource("8_vf7bx")]
+position = Vector2(1504, 416.0001)
+scale = Vector2(5, 5)
 
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
 [connection signal="body_entered" from="key1" to="." method="_on_key_1_body_entered"]

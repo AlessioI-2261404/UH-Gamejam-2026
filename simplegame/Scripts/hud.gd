@@ -9,6 +9,9 @@ enum ToolSelected {
 
 @onready var eraser_sounds = [$Cursor/EraserSound1, $Cursor/EraserSound2, $Cursor/EraserSound3]
 @onready var pencil_sounds = [$Cursor/PencilSound1, $Cursor/PencilSound2, $Cursor/PencilSound3]
+@onready var leveldone = $leveldone
+@onready var leveldone2 = $leveldone2
+
 var current_pencil_sound : int = 0
 var current_eraser_sound : int = 0
 
@@ -111,3 +114,10 @@ func stop_pencil_sound() -> void:
 
 func stop_eraser_sound() -> void:
 	eraser_sounds[current_eraser_sound].stop()
+
+func play_level_finished_sound(levelnum : int)-> void:
+	if levelnum == 6:
+		leveldone.play()
+	else:
+		leveldone2.play()
+		

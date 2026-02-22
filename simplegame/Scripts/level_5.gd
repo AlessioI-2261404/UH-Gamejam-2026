@@ -6,7 +6,7 @@ extends Node2D
 @onready var hud: HUD = $HUD
 @onready var player = $Player
 @onready var drawing_layer = $Drawer  # add this at the top
-#@onready var box = $Box
+@onready var box = $Box
 
 
 var drawing := false
@@ -85,7 +85,7 @@ func _apply_tool_from_mouse() -> void:
 			var last_pos: Vector2 = drawing_layer.path.back()
 			var space_state = get_world_2d().direct_space_state
 			var params = PhysicsRayQueryParameters2D.create(last_pos, world_pos)
-			params.exclude = [player.get_rid()]
+			params.exclude = [player.get_rid(), box.get_rid()]
 			var result = space_state.intersect_ray(params)
 			if result:
 				return  # line crosses an obstacle
@@ -123,6 +123,17 @@ func _clear_drawer_path() -> void:
 	drawing_layer.path.clear()
 	drawing_layer.path.append(player.original_position)  
 	drawing_layer.queue_redraw()
+	box.freeze = true
+	box.linear_velocity = Vector2.ZERO
+	box.angular_velocity = 0.0
+	await get_tree().process_frame
+	await get_tree().process_frame
+	PhysicsServer2D.body_set_state(
+		box.get_rid(),
+		PhysicsServer2D.BODY_STATE_TRANSFORM,
+		Transform2D(0, $BoxStartPos.global_position)  # force physics server position
+	)
+	box.freeze = false
 
 	player.playAnimation("moving")
 	player.adjust_position(player.original_position)
@@ -138,5 +149,7 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		if next_scene != "":
 			get_tree().change_scene_to_file(next_scene)
 		else:
+			hud.play_level_finished_sound(5)
+			await get_tree().create_timer(2.0).timeout
 			hud._on_reset_button_pressed()
 			get_tree().change_scene_to_file("res://levels/Level6.tscn")

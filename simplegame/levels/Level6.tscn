@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://kh68pc51y31q" path="res://Scripts/drawer.gd" id="5_ds0xo"]
 [ext_resource type="PackedScene" uid="uid://c4ssf40pr1eb1" path="res://Scenes/Player.tscn" id="6_d2hsu"]
 [ext_resource type="Texture2D" uid="uid://bq4mhwxswvinw" path="res://Assets/key.png" id="7_iyiek"]
+[ext_resource type="PackedScene" uid="uid://knvoewnwpa0" path="res://Scenes/particle.tscn" id="8_mh3lf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2heq8"]
 texture = ExtResource("3_sx15a")
@@ -3405,6 +3406,10 @@ shape = SubResource("RectangleShape2D_cw3f8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gate6" unique_id=1996165792]
 position = Vector2(2270.75, 2981.75)
 shape = SubResource("RectangleShape2D_vse3i")
+
+[node name="gateparticle" parent="." unique_id=712945590 instance=ExtResource("8_mh3lf")]
+position = Vector2(2292, 3244.9998)
+scale = Vector2(5, 5)
 
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
 [connection signal="body_entered" from="key4" to="." method="_on_key_4_body_entered"]

@@ -13,6 +13,7 @@ extends Node2D
 @onready var gate1 = $gate1/CollisionShape2D
 @onready var key2 = $key2
 @onready var gate2 = $gate2/CollisionShape2D
+@onready var gateparticle = $gateparticle/CPUParticles2D
 
 
 
@@ -146,6 +147,8 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		if next_scene != "":
 			get_tree().change_scene_to_file(next_scene)
 		else:
+			hud.play_level_finished_sound(4)
+			await get_tree().create_timer(2.0).timeout
 			hud._on_reset_button_pressed()
 			get_tree().change_scene_to_file("res://levels/Level5.tscn")
 			
@@ -156,8 +159,12 @@ func _on_key_1_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		key1.hide()		
 		gate1.set_deferred("disabled", true)
+		gateparticle.one_shot = true
+		gateparticle.emitting = true
 
 func _on_key_2_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		key2.hide()		
 		gate2.set_deferred("disabled", true)
+		gateparticle.one_shot = true
+		gateparticle.emitting = true

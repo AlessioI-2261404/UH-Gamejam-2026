@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://dmp0orpof5h6e" path="res://Assets/SFX/Potlood1.wav" id="8_piegi"]
 [ext_resource type="AudioStream" uid="uid://bl3knf4s7g3o0" path="res://Assets/SFX/Potlood2.wav" id="9_i2avg"]
 [ext_resource type="AudioStream" uid="uid://bcf62sar5h6st" path="res://Assets/SFX/Potlood3.wav" id="10_1a2va"]
+[ext_resource type="AudioStream" uid="uid://bci21ish1gdps" path="res://Assets/SFX/YOUdidIT.wav" id="11_4f5kr"]
+[ext_resource type="AudioStream" uid="uid://dkvcfntau0oua" path="res://Assets/SFX/Complete.wav" id="12_piegi"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6fbih"]
 
@@ -285,6 +287,14 @@ offset_right = 1101.0
 offset_bottom = 381.0
 text = "Move"
 metadata/_edit_use_anchors_ = true
+
+[node name="leveldone" type="AudioStreamPlayer" parent="." unique_id=1158273147]
+stream = ExtResource("11_4f5kr")
+volume_db = 16.736
+
+[node name="leveldone2" type="AudioStreamPlayer" parent="." unique_id=960580564]
+stream = ExtResource("12_piegi")
+volume_db = 12.213
 
 [connection signal="pressed" from="Pencil/pencilBtn" to="." method="_on_pencil_btn_pressed"]
 [connection signal="pressed" from="Erase/eraseBtn" to="." method="_on_erase_btn_pressed"]

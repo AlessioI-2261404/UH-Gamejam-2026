@@ -6,11 +6,15 @@ extends Node2D
 @onready var hud: HUD = $HUD
 @onready var player = $Player
 @onready var drawing_layer = $Drawer  # add this at the top
+@onready var leveldone = $L
+
 #@onready var box = $Box
 
 #Key-gate relations
 @onready var key1 = $key
 @onready var gate1 = $gate/CollisionShape2D
+@onready var gateparticle = $gateparticle/CPUParticles2D
+
 
 var drawing := false
 var current_tool: HUD.ToolSelected = HUD.ToolSelected.NONE
@@ -141,11 +145,14 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		if next_scene != "":
 			get_tree().change_scene_to_file(next_scene)
 		else:
+			hud.play_level_finished_sound(3)
+			await get_tree().create_timer(2.0).timeout
 			hud._on_reset_button_pressed()
 			get_tree().change_scene_to_file("res://levels/Level4.tscn")
-
-
+			
 func _on_key_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		key1.hide()		
 		gate1.set_deferred("disabled", true)
+		gateparticle.one_shot = true
+		gateparticle.emitting = true
