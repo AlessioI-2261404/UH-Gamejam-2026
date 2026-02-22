@@ -55,6 +55,8 @@ func update_pencil_state(state: int) -> void:
 	$Pencil/AnimatedSprite2D.play(anim)
 	$Cursor.set_pencil_cursor(state)
 
+func set_initial_pencil_power(power : float) -> void:
+	pencil_power = power
 	
 	
 	

@@ -8,6 +8,13 @@ extends Node2D
 @onready var drawing_layer = $Drawer  # add this at the top
 #@onready var box = $Box
 
+#Key-gate relations
+@onready var key1 = $key1
+@onready var gate1 = $gate1/CollisionShape2D
+@onready var key2 = $key2
+@onready var gate2 = $gate2/CollisionShape2D
+
+
 
 var drawing := false
 var current_tool: HUD.ToolSelected = HUD.ToolSelected.NONE
@@ -27,8 +34,8 @@ func _ready() -> void:
 	hud.move_pressed.connect(_move_player)
 	hud.clear_path.connect(_clear_drawer_path)
 	drawing_layer.path.append(player.global_position)
+	hud.set_initial_pencil_power(6000)	
 
-	
 
 
 func _on_tool_changed(tool: HUD.ToolSelected) -> void:
@@ -111,25 +118,27 @@ func _apply_tool_from_mouse() -> void:
 func _move_player() -> void:
 	player.playAnimation("moving")
 	player.playWalkingSound(true)
-	for dot in drawing_layer.path:
+	while drawing_layer.path.size() > 1:
+		var dot: Vector2 = drawing_layer.path.pop_front() 
 		player.adjust_position(dot)
-		await player.reached_position 
+		await player.reached_position
 	player.playWalkingSound(false)
 	player.playAnimation("idle")
 
-		
 func _clear_drawer_path() -> void:
-	var first: Vector2 = drawing_layer.path[0]
-	#box.global_position = $BoxStartPos.global_position
 	drawing_layer.path.clear()
-	drawing_layer.path.append(first)
+	drawing_layer.path.append(player.original_position)  
 	drawing_layer.queue_redraw()
-	
+
 	player.playAnimation("moving")
 	player.adjust_position(player.original_position)
+	await player.reached_position  
 	player.playAnimation("idle")
 
-
+	key1.show()		
+	gate1.set_deferred("disabled", false)
+	key2.show()		
+	gate2.set_deferred("disabled", false)
 
 func _on_exit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
@@ -139,3 +148,16 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		else:
 			hud._on_reset_button_pressed()
 			get_tree().change_scene_to_file("res://levels/Level5.tscn")
+			
+
+
+
+func _on_key_1_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		key1.hide()		
+		gate1.set_deferred("disabled", true)
+
+func _on_key_2_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		key2.hide()		
+		gate2.set_deferred("disabled", true)

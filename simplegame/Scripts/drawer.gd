@@ -17,9 +17,10 @@ func _calc_pencil_state(pencil_power: float) -> int:
 		total_length += path[i].distance_to(path[i + 1])
 	
 	var normalized: float = clamp(total_length / pencil_power, 0.0, 1.0)
+		
 	return mini(int(normalized * 5), 4)
 
-	
+
 	
 	
 	
