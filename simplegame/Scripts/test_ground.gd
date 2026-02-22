@@ -44,7 +44,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		drawing = event.pressed
 		if drawing:
 			_apply_tool_from_mouse()
-
+		else:
+			hud.stop_pencil_sound()
+			hud.stop_eraser_sound()
 
 	# Dragging
 	if event is InputEventMouseMotion:
@@ -55,11 +57,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			var world_pos: Vector2 = get_global_mouse_position()
 			mouse_on_player = world_pos.distance_to(player.global_position) < 32.0
 			drawing_layer.dot_pos = world_pos
+			hud.stop_eraser_sound()
+			hud.stop_pencil_sound()
 
 	
 	if not drawing:
 		drawing_layer.queue_redraw()
-
+		hud.stop_eraser_sound()
+		hud.stop_pencil_sound()
 
 func _apply_tool_from_mouse() -> void:
 	var world_pos: Vector2 = get_global_mouse_position()
@@ -90,6 +95,7 @@ func _apply_tool_from_mouse() -> void:
 		# Update both pencil sprites
 		var state: int = drawing_layer._calc_pencil_state(hud.pencil_power)
 		hud.update_pencil_state(state)
+		hud.play_pencil_sound()
 	
 	if current_tool == HUD.ToolSelected.ERASE:
 		var erase_radius: float = 50.0
@@ -98,6 +104,7 @@ func _apply_tool_from_mouse() -> void:
 			func(p): return p == first or p.distance_to(world_pos) > erase_radius
 		)
 		drawing_layer.queue_redraw()
+		hud.play_eraser_sound()
 		
 		
 func _move_player() -> void:

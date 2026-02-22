@@ -7,7 +7,12 @@ enum ToolSelected {
 	NONE
 }
 
-var pencil_power: float = 500.0
+@onready var eraser_sounds = [$Cursor/EraserSound1, $Cursor/EraserSound2, $Cursor/EraserSound3]
+@onready var pencil_sounds = [$Cursor/PencilSound1, $Cursor/PencilSound2, $Cursor/PencilSound3]
+var current_pencil_sound : int = 0
+var current_eraser_sound : int = 0
+
+var pencil_power: float = 3000.0 #IN PIXELS
 var _last_pencil_state: int = 0
 
 signal tool_changed(tool: ToolSelected)
@@ -26,11 +31,12 @@ func tool_select(tool: ToolSelected) -> void:
 	if toolSelected == tool:
 		toolSelected = ToolSelected.NONE
 		set_tool(ToolSelected.NONE)
+		tool_changed.emit(toolSelected)
 	else:
 		toolSelected = tool
 		set_tool(tool)
+		tool_changed.emit(toolSelected)
 
-	tool_changed.emit(toolSelected)
 
 
 func update_pencil_state(state: int) -> void:
@@ -40,7 +46,7 @@ func update_pencil_state(state: int) -> void:
 		return
 	
 	if _last_pencil_state == 4 and state == 4:
-		tool_select(ToolSelected.NONE)	
+		tool_select(ToolSelected.NONE)
 		return
 	
 	_last_pencil_state = state  
@@ -84,3 +90,23 @@ func _on_reset_button_pressed() -> void:
 func _on_move_button_pressed() -> void:
 	print("I CAN MOVE?")
 	move_pressed.emit()
+
+
+func play_eraser_sound():
+	if not eraser_sounds[current_eraser_sound].playing:
+		var idx: int = randi_range(0, 2)
+		current_eraser_sound = idx
+		eraser_sounds[idx].play()
+	
+func play_pencil_sound() -> void:
+	if not pencil_sounds[current_pencil_sound].playing:
+		var idx: int = randi_range(0, 2)
+		current_pencil_sound = idx
+		pencil_sounds[idx].play()
+
+func stop_pencil_sound() -> void:
+	pencil_sounds[current_pencil_sound].stop()
+
+func stop_eraser_sound() -> void:
+	eraser_sounds[current_eraser_sound].stop()
+	

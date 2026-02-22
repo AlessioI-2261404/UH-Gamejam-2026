@@ -12,10 +12,12 @@ func _draw() -> void:
 			draw_line(to_local(path[i]), to_local(path[i + 1]), Color.WHITE, 10.0)
 
 func _calc_pencil_state(pencil_power: float) -> int:
-	var num_dots : int = len(path)
-	var normalized: float = clamp(float(num_dots) / pencil_power, 0.0, 1.0)
+	var total_length: float = 0.0
+	for i in range(path.size() - 1):
+		total_length += path[i].distance_to(path[i + 1])
+	
+	var normalized: float = clamp(total_length / pencil_power, 0.0, 1.0)
 	return mini(int(normalized * 5), 4)
-
 
 	
 	

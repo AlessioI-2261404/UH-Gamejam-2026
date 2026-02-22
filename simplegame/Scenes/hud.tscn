@@ -1,9 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://b32i38w0eftue"]
+[gd_scene format=3 uid="uid://b32i38w0eftue"]
 
 [ext_resource type="Script" uid="uid://b3ef6yw3lse8v" path="res://Scripts/hud.gd" id="1_bjfho"]
 [ext_resource type="Texture2D" uid="uid://ca4subqsyh5iq" path="res://Assets/Chalk.png" id="2_bjfho"]
 [ext_resource type="Texture2D" uid="uid://cj5pt54dpb47q" path="res://Assets/Eraser.png" id="2_fccik"]
 [ext_resource type="Script" uid="uid://cu05t7m0s2snv" path="res://Scenes/cursor.gd" id="4_6fbih"]
+[ext_resource type="AudioStream" uid="uid://dc1j5qxp6a6ko" path="res://Assets/SFX/GOM1.wav" id="5_5ep0j"]
+[ext_resource type="AudioStream" uid="uid://0s16lrbrc8dv" path="res://Assets/SFX/GOM2.wav" id="6_8jye8"]
+[ext_resource type="AudioStream" uid="uid://bae207jj15att" path="res://Assets/SFX/GOM3.wav" id="7_4f5kr"]
+[ext_resource type="AudioStream" uid="uid://dmp0orpof5h6e" path="res://Assets/SFX/Potlood1.wav" id="8_piegi"]
+[ext_resource type="AudioStream" uid="uid://bl3knf4s7g3o0" path="res://Assets/SFX/Potlood2.wav" id="9_i2avg"]
+[ext_resource type="AudioStream" uid="uid://bcf62sar5h6st" path="res://Assets/SFX/Potlood3.wav" id="10_1a2va"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6fbih"]
 
@@ -168,12 +174,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=1307682103]
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 script = ExtResource("1_bjfho")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=846283874]
 modulate = Color(0.840846, 0.880314, 1, 1)
 self_modulate = Color(0.827022, 0.94313, 0.999451, 1)
 offset_left = 2091.0
@@ -183,11 +189,11 @@ offset_bottom = 408.0
 texture = SubResource("CanvasTexture_6fbih")
 metadata/_edit_use_anchors_ = true
 
-[node name="Pencil" type="Node2D" parent="."]
+[node name="Pencil" type="Node2D" parent="." unique_id=163178629]
 position = Vector2(260, -452)
 metadata/_edit_group_ = true
 
-[node name="pencilBtn" type="Button" parent="Pencil"]
+[node name="pencilBtn" type="Button" parent="Pencil" unique_id=1389826261]
 visibility_layer = 0
 offset_left = 1892.0
 offset_top = 531.0
@@ -196,17 +202,17 @@ offset_bottom = 578.0
 text = "p"
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pencil" unique_id=1284243327]
 position = Vector2(1906, 552)
 scale = Vector2(0.631, 0.324)
 sprite_frames = SubResource("SpriteFrames_e0onf")
 animation = &"100%"
 
-[node name="Erase" type="Node2D" parent="."]
+[node name="Erase" type="Node2D" parent="." unique_id=1435000404]
 position = Vector2(1096, -9.00001)
 metadata/_edit_group_ = true
 
-[node name="eraseBtn" type="Button" parent="Erase"]
+[node name="eraseBtn" type="Button" parent="Erase" unique_id=1917917316]
 visibility_layer = 0
 offset_left = 1045.0
 offset_top = 193.0
@@ -215,13 +221,13 @@ offset_bottom = 246.0
 text = "Erse"
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Erase" unique_id=409372443]
 position = Vector2(1068, 222)
 scale = Vector2(0.0979167, 0.104792)
 sprite_frames = SubResource("SpriteFrames_fccik")
 animation = &"idle"
 
-[node name="Cursor" type="AnimatedSprite2D" parent="."]
+[node name="Cursor" type="AnimatedSprite2D" parent="." unique_id=940928117]
 position = Vector2(1096, -9.00001)
 rotation = 0.312414
 scale = Vector2(0.1, 0.1)
@@ -229,10 +235,34 @@ sprite_frames = SubResource("SpriteFrames_5ep0j")
 animation = &"pencil0%"
 script = ExtResource("4_6fbih")
 
-[node name="Options" type="Node2D" parent="."]
+[node name="EraserSound1" type="AudioStreamPlayer2D" parent="Cursor" unique_id=1672651914]
+stream = ExtResource("5_5ep0j")
+volume_db = 10.0
+
+[node name="EraserSound2" type="AudioStreamPlayer2D" parent="Cursor" unique_id=1957332077]
+stream = ExtResource("6_8jye8")
+volume_db = 10.0
+
+[node name="EraserSound3" type="AudioStreamPlayer2D" parent="Cursor" unique_id=263068560]
+stream = ExtResource("7_4f5kr")
+volume_db = 10.0
+
+[node name="PencilSound1" type="AudioStreamPlayer2D" parent="Cursor" unique_id=1739465116]
+stream = ExtResource("8_piegi")
+volume_db = 10.0
+
+[node name="PencilSound2" type="AudioStreamPlayer2D" parent="Cursor" unique_id=604225170]
+stream = ExtResource("9_i2avg")
+volume_db = 10.0
+
+[node name="PencilSound3" type="AudioStreamPlayer2D" parent="Cursor" unique_id=1378324561]
+stream = ExtResource("10_1a2va")
+volume_db = 10.0
+
+[node name="Options" type="Node2D" parent="." unique_id=180551409]
 position = Vector2(1096, -9.00001)
 
-[node name="Reset" type="Button" parent="Options"]
+[node name="Reset" type="Button" parent="Options" unique_id=1064732810]
 offset_left = 1027.0
 offset_top = 274.0
 offset_right = 1098.0
@@ -240,7 +270,7 @@ offset_bottom = 322.0
 text = "Reset"
 metadata/_edit_use_anchors_ = true
 
-[node name="Move" type="Button" parent="Options"]
+[node name="Move" type="Button" parent="Options" unique_id=356427706]
 offset_left = 1028.0
 offset_top = 339.0
 offset_right = 1101.0

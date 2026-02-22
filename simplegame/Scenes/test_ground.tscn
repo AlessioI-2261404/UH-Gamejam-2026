@@ -3412,6 +3412,7 @@ sources/0 = SubResource("TileSetAtlasSource_lbatl")
 
 [node name="TestGround" type="Node2D" unique_id=2123834809]
 script = ExtResource("1_2heq8")
+restrict_to_ground_tiles = null
 
 [node name="HUD" parent="." unique_id=643687383 instance=ExtResource("4_x1xgk")]
 
