@@ -1,43 +1,136 @@
-[gd_scene load_steps=2 format=3 uid="uid://befgej3cbdws"]
+[gd_scene load_steps=6 format=3 uid="uid://befgej3cbdws"]
 
 [ext_resource type="Script" uid="uid://br0vfqo44l4m8" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://cpmmm8xmadd0e" path="res://Assets/istockphoto-656457160-170667a.jpg" id="2_853f1"]
+[ext_resource type="FontFile" uid="uid://dv8yvqwee3y7j" path="res://font/CruPokawinAlizePencil-Dp91.ttf" id="3_ghw46"]
+[ext_resource type="FontFile" uid="uid://clfeg6osi0x4x" path="res://font/CruPokawinAlizePencilItalic-mnwv.ttf" id="4_df05h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghw46"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_tt5f1")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -1.0
-offset_right = 39.0
-offset_bottom = 40.0
-scale = Vector2(29.444, 16.7949)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 361.0
-offset_top = 68.0
-offset_right = 491.0
-offset_bottom = 161.0
+anchor_left = 0.046
+anchor_top = -0.081
+anchor_right = 2.418
+anchor_bottom = 2.563
+offset_left = -52.992
+offset_top = 52.488
+offset_right = -2785.54
+offset_bottom = -1660.82
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.10291, 5.64922)
+scale = Vector2(2.46168, 2.46168)
+script = ExtResource("1_tt5f1")
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Istockphoto-656457160-170667a" type="Sprite2D" parent="."]
+position = Vector2(576, 327)
+scale = Vector2(2.12022, 2.12022)
+texture = ExtResource("2_853f1")
+
+[node name="Title" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-text = "BLABLABALABLA"
+offset_left = 113.743
+offset_top = 106.431
+offset_right = 585.743
+offset_bottom = 544.431
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_ghw46")
+theme_override_font_sizes/font_size = 150
+text = "Keep
+It
+Simple"
 
-[node name="Level1" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-text = "level1"
+offset_left = 698.71
+offset_top = 125.93
+offset_right = 1023.71
+offset_bottom = 269.93
+theme_override_fonts/font = ExtResource("4_df05h")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
+text = "START "
 
-[node name="Level2" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 681.649
+offset_top = 354.636
+offset_right = 808.649
+offset_bottom = 455.636
+scale = Vector2(3.54019, 3.54019)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-text = "level2"
+
+[node name="Level1" type="Button" parent="HBoxContainer/VBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_df05h")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
+text = "level 1"
+
+[node name="Level2" type="Button" parent="HBoxContainer/VBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_df05h")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
+text = "level 2"
+
+[node name="Level3" type="Button" parent="HBoxContainer/VBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_df05h")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
+text = "level 3"
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Level4" type="Button" parent="HBoxContainer/VBoxContainer3"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_df05h")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
+text = "level 4"
+
+[node name="Level5" type="Button" parent="HBoxContainer/VBoxContainer3"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_df05h")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
+text = "level 5"
+
+[node name="Level6" type="Button" parent="HBoxContainer/VBoxContainer3"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_df05h")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_ghw46")
+text = "level 6"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575.217, 328.231)
+zoom = Vector2(0.42, 0.4)
