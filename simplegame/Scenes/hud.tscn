@@ -207,6 +207,7 @@ position = Vector2(1906, 552)
 scale = Vector2(0.631, 0.324)
 sprite_frames = SubResource("SpriteFrames_e0onf")
 animation = &"100%"
+autoplay = "100%"
 
 [node name="Erase" type="Node2D" parent="." unique_id=1435000404]
 position = Vector2(1096, -9.00001)
@@ -236,28 +237,35 @@ animation = &"pencil0%"
 script = ExtResource("4_6fbih")
 
 [node name="EraserSound1" type="AudioStreamPlayer2D" parent="Cursor" unique_id=1672651914]
+scale = Vector2(5, 5)
 stream = ExtResource("5_5ep0j")
 volume_db = 10.0
+max_distance = 9999.0
 
 [node name="EraserSound2" type="AudioStreamPlayer2D" parent="Cursor" unique_id=1957332077]
 stream = ExtResource("6_8jye8")
 volume_db = 10.0
+max_distance = 9999.0
 
 [node name="EraserSound3" type="AudioStreamPlayer2D" parent="Cursor" unique_id=263068560]
 stream = ExtResource("7_4f5kr")
 volume_db = 10.0
+max_distance = 9999.0
 
 [node name="PencilSound1" type="AudioStreamPlayer2D" parent="Cursor" unique_id=1739465116]
 stream = ExtResource("8_piegi")
 volume_db = 10.0
+max_distance = 9999.0
 
 [node name="PencilSound2" type="AudioStreamPlayer2D" parent="Cursor" unique_id=604225170]
 stream = ExtResource("9_i2avg")
 volume_db = 10.0
+max_distance = 9999.0
 
 [node name="PencilSound3" type="AudioStreamPlayer2D" parent="Cursor" unique_id=1378324561]
 stream = ExtResource("10_1a2va")
 volume_db = 10.0
+max_distance = 9999.0
 
 [node name="Options" type="Node2D" parent="." unique_id=180551409]
 position = Vector2(1096, -9.00001)

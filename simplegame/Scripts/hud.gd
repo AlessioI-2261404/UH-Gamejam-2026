@@ -109,4 +109,3 @@ func stop_pencil_sound() -> void:
 
 func stop_eraser_sound() -> void:
 	eraser_sounds[current_eraser_sound].stop()
-	

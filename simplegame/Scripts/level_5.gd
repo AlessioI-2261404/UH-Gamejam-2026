@@ -1,12 +1,13 @@
 extends Node2D
+@export_file("*.tscn") var next_scene: String
 
 @onready var ground_layer = $Ground
 @onready var highlight_layer = $Path_Highlight
 @onready var hud: HUD = $HUD
 @onready var player = $Player
 @onready var drawing_layer = $Drawer  # add this at the top
+#@onready var box = $Box
 
-@export_file("*.tscn") var next_scene: String
 
 var drawing := false
 var current_tool: HUD.ToolSelected = HUD.ToolSelected.NONE
@@ -44,7 +45,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		drawing = event.pressed
 		if drawing:
 			_apply_tool_from_mouse()
-
+		else:
+			hud.stop_pencil_sound()
+			hud.stop_eraser_sound()
 
 	# Dragging
 	if event is InputEventMouseMotion:
@@ -55,11 +58,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			var world_pos: Vector2 = get_global_mouse_position()
 			mouse_on_player = world_pos.distance_to(player.global_position) < 32.0
 			drawing_layer.dot_pos = world_pos
+			hud.stop_eraser_sound()
+			hud.stop_pencil_sound()
 
 	
 	if not drawing:
 		drawing_layer.queue_redraw()
-
+		hud.stop_eraser_sound()
+		hud.stop_pencil_sound()
 
 func _apply_tool_from_mouse() -> void:
 	var world_pos: Vector2 = get_global_mouse_position()
@@ -90,6 +96,7 @@ func _apply_tool_from_mouse() -> void:
 		# Update both pencil sprites
 		var state: int = drawing_layer._calc_pencil_state(hud.pencil_power)
 		hud.update_pencil_state(state)
+		hud.play_pencil_sound()
 	
 	if current_tool == HUD.ToolSelected.ERASE:
 		var erase_radius: float = 50.0
@@ -98,22 +105,30 @@ func _apply_tool_from_mouse() -> void:
 			func(p): return p == first or p.distance_to(world_pos) > erase_radius
 		)
 		drawing_layer.queue_redraw()
+		hud.play_eraser_sound()
 		
 		
 func _move_player() -> void:
+	player.playAnimation("moving")
+	player.playWalkingSound(true)
 	for dot in drawing_layer.path:
 		player.adjust_position(dot)
 		await player.reached_position 
+	player.playWalkingSound(false)
+	player.playAnimation("idle")
 
-	
+		
 func _clear_drawer_path() -> void:
 	var first: Vector2 = drawing_layer.path[0]
+	#box.global_position = $BoxStartPos.global_position
 	drawing_layer.path.clear()
 	drawing_layer.path.append(first)
 	drawing_layer.queue_redraw()
 	
+	player.playAnimation("moving")
 	player.adjust_position(player.original_position)
-	
+	player.playAnimation("idle")
+
 
 	
 
@@ -124,4 +139,5 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		if next_scene != "":
 			get_tree().change_scene_to_file(next_scene)
 		else:
+			hud._on_reset_button_pressed()
 			get_tree().change_scene_to_file("res://levels/Level6.tscn")
