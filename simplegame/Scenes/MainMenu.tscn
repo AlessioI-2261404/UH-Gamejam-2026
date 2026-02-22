@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://befgej3cbdws"]
 
 [ext_resource type="Script" uid="uid://br0vfqo44l4m8" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
-[ext_resource type="Texture2D" uid="uid://cpmmm8xmadd0e" path="res://Assets/istockphoto-656457160-170667a.jpg" id="2_853f1"]
+[ext_resource type="Texture2D" uid="uid://df20ye4upfryg" path="res://Scenes/no-longer-here-notebook-316823_640.jpg" id="2_ghw46"]
 [ext_resource type="FontFile" uid="uid://dv8yvqwee3y7j" path="res://font/CruPokawinAlizePencil-Dp91.ttf" id="3_ghw46"]
 [ext_resource type="FontFile" uid="uid://clfeg6osi0x4x" path="res://font/CruPokawinAlizePencilItalic-mnwv.ttf" id="4_df05h"]
 
@@ -30,7 +30,7 @@ script = ExtResource("1_tt5f1")
 [node name="Istockphoto-656457160-170667a" type="Sprite2D" parent="." unique_id=1378903221]
 position = Vector2(576, 327)
 scale = Vector2(2.12022, 2.12022)
-texture = ExtResource("2_853f1")
+texture = ExtResource("2_ghw46")
 
 [node name="Title" type="Label" parent="." unique_id=1533469291]
 modulate = Color(0, 0, 0, 1)
